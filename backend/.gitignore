@@ -2,6 +2,7 @@
 
 .env
 .env.*
+seedSlots.js
 
 npm-debug.log*
 yarn-debug.log*
