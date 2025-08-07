@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import rateLimit from 'express-rate-limit';
 import connectDB from './db/index.js';
 import apiRoutes from './routes/api.route.js';
 import healthcheckController from './controllers/healthcheck.controller.js';
@@ -15,13 +14,6 @@ app.use(cors({
 }));
 app.use(express.json({limit: "16kb"}));
 
-const apiLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    standardHeaders: true,
-    legacyHeaders: false,
-});
-app.use('/api', apiLimiter);
 app.use('/api', apiRoutes);
 app.get('/health', healthcheckController);
 
